@@ -1,2 +1,51 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<div class="main">
+  <h1>Books</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><%= link_to "show", book_path(book.id) %></td>
+   　    <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+      　<td><%= link_to "Destroy", book_path(book.id),method: :delete, "data-confirm" => "Are you sure?" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  <div class="newbook">
+    <div class="nb">
+      <h2>New book</h2>
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %> errors prohibited this book from being saved:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+    <div class="title">
+      <%= form_with model: @book do |f| %>
+        <p>Title</p>
+        <p><%= f.text_field :title %></p>
+
+        <p>Body</P>
+        <p><%= f.text_area :body %></p>
+
+        <p><%= f.submit 'Create Book' %></p>
+      <% end %>
+    </div>
+  </div>
+
+

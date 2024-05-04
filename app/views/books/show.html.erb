@@ -1,9 +1,10 @@
-<p>Book was successfully created.</p>
+ <main>
+ <div>
+  <%= flash[:notice] %>
+ </div>
 
-  <p>Title:</p>
-  <p><%= @book.title %></p>
-
-  <p>Body</p>
-  <p><%= @book.body %></p>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  <a href="/books">Back</a>
+ <p><strong>Title:</strong> <%= @book.title %> </p>
+ <p><strong>Body:</strong> <%= @book.body %> </p>
+ <%= link_to "Edit", edit_book_path(@book.id) %>
+ <%= link_to "Back", books_path %>
+ </main>
