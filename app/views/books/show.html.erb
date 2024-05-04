@@ -1,9 +1,9 @@
-<h1>Book was successfully created.</h1>
-<% @books.each do |book| %>
+<p>Book was successfully created.</p>
 
   <p>Title:</p>
-  <span><%= book.title %></span>
+  <p><%= @book.title %></p>
 
   <p>Body</p>
-  <span><%= book.body %></span>
-<% end %>
+  <p><%= @book.body %></p>
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+  <a href="/books">Back</a>

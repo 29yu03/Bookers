@@ -1,15 +1,18 @@
-<% @books.each do |book| %>
+<div class="main">
+  <div class="book-wrap">
+    <h1>books</h1>
+    <% @books.each do |book| %>
+    <div class="book-box">
+      <p>Title:</p>
+      <p><%= book.title %></p>
 
-  <p>Title:</p>
-  <span><%= book.title %></span>
+      <p>Body</p>
+      <p><%= book.body %></p>
+      <%= link_to "Destroy", book_path(book.id),method: :delete, "date-confirm" => "Are you sure?" %>
+     <% end %>
+    </div>
+  </div>
 
-  <p>Body</p>
-  <span><%= book.body %></span>
-  
-  
-  
-  
-<% end %>
 
 <h1>New book</h1>
 <%= form_with model: @book do |f| %>
@@ -21,4 +24,5 @@
 
   <%= f.submit 'Create Book' %>
 <% end %>
+</div>
 
